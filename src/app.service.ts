@@ -10,9 +10,3 @@ export class AppService {
   }
 }
 
-@Injectable()
-export class productService {
-  logicToProductList(...products): string[] {
-   return []
-  }
-}
