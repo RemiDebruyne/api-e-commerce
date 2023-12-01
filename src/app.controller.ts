@@ -16,12 +16,9 @@ export class AppController {
     }
   }
 
-  @Controller("product")
-  export class productController {
-    constructor(private readonly productService: productService){}
-    
-    @Get()
-    getProductList(): string[] {
-      return this.productService.logicToProductList();
+@Controller("products")
+  export class ProductController {
+    constructor(){
+      
     }
   }
