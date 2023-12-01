@@ -9,3 +9,9 @@ import { AppService, ProductService } from './app.service';
 })
 export class AppModule {}
 
+@Module({
+  imports: [],
+  controllers: [ProductController],
+  providers: [ProductService],
+})
+export class ProductModule {}
