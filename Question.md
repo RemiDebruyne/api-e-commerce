@@ -23,3 +23,5 @@ public async updateByUUID(uuid: string, updateUserDto: UpdateUserDto) {
 - Etape 30, pourquoi l'import de `NormalizedResponse` n'est pas enter bracket
 
 - C'est quoi InestApplication
+
+- Pourquoi swagger est set-up différement de l'explication de la doc (avec une function plutot qu'une const, avec INest application et avec swaggerModule.CreateDocument à l'intérieur de SwaggerModule.setup et pas l'un après l'autre)
