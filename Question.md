@@ -1,6 +1,6 @@
 # Question
 
-- A l'étape 26, à l'intérieur des crochets de `@Get` pourquoi est-ce que la route doit être `:uuid` et pas `uuid`
+- A l'étape 26, à l'intérieur des crochets de `@Get` pourquoi est-ce que la route doit être `:uuid` et pas `uuid`. Qeulle différence entre avec et sans deux points
 
 - Réexpliquer le `this.usersService.getByUUID(uuid)` ou `this.prisma.users.findUnique`
 
