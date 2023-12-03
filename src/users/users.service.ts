@@ -34,11 +34,20 @@ export class UsersService {
 
  
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
+  public async updateByUUID(uuid: string, updateUserDto: UpdateUserDto) {
+    const updatedUser = await this.prisma.users.update({
+      where : {
+        UUID: uuid,
+      },
+      data: {
+        Pseudo: !!updateUserDto ? updateUserDto.pseudo : undefined, Mail: !!updateUserDto ? updateUserDto.mail : undefined,
+      },
+    });
+    return updatedUser;
   }
 
   remove(id: number) {
     return `This action removes a #${id} user`;
   }
 }
+
