@@ -3,56 +3,66 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { userInfo } from 'os';
 import { PrismaService } from 'src/prisma.service';
+import NormalizedResponse from 'src/utils/normalized-response';
 
 @Injectable()
 export class UsersService {
-  constructor(private readonly prisma: PrismaService){}
+  constructor(private readonly prisma: PrismaService) {}
 
-  public async create(createUserDto: CreateUserDto){
-    const createdUser = await this.prisma.users.create({
-      data: {
-        Pseudo: createUserDto.pseudo,
-        Mail: createUserDto.mail
-      },
-    });
-    return createUserDto
+  public async create(createUserDto: CreateUserDto) {
+    const createdUser = new NormalizedResponse(
+      `User ${createUserDto.pseudo} has been created`,
+      await this.prisma.users.create({
+        data: {
+          Pseudo: createUserDto.pseudo,
+          Mail: createUserDto.mail,
+        },
+      }),
+    );
+    return createdUser.toJSON();
   }
 
   public async getByUUID(uuid: string) {
-    const gettedUser = await this.prisma.users.findUnique({
-      where: {
-        UUID: uuid,
-      },
-    });
-    return gettedUser;
+    const gettedUser = new NormalizedResponse(
+      `User ${uuid} has been found`,
+      await this.prisma.users.findUnique({
+        where: {
+          UUID: uuid,
+        },
+      }),
+    );
+    return gettedUser.toJSON();
   }
-
 
   findAll() {
     return `This action returns all users`;
   }
 
- 
-
   public async updateByUUID(uuid: string, updateUserDto: UpdateUserDto) {
-    const updatedUser = await this.prisma.users.update({
-      where : {
-        UUID: uuid,
-      },
-      data: {
-        Pseudo: !!updateUserDto ? updateUserDto.pseudo : undefined, Mail: !!updateUserDto ? updateUserDto.mail : undefined,
-      },
-    });
-    return updatedUser;
+    const updatedUser = new NormalizedResponse(
+      `User ${updateUserDto.pseudo} has been updated`,
+      await this.prisma.users.update({
+        where: {
+          UUID: uuid,
+        },
+        data: {
+          Pseudo: !!updateUserDto ? updateUserDto.pseudo : undefined,
+          Mail: !!updateUserDto ? updateUserDto.mail : undefined,
+        },
+      }),
+    );
+    return updatedUser.toJSON();
   }
 
   public async deleteByUUID(uuid: string) {
-    const deletedUser = await this.prisma.users.delete({
-      where : {
-        UUID: uuid,
-      }
-    });
-    return deletedUser;
+    const deletedUser = new NormalizedResponse(
+      `User ${uuid} has been deleted`,
+      await this.prisma.users.delete({
+        where: {
+          UUID: uuid,
+        },
+      }),
+    );
+    return deletedUser.toJSON();
   }
 }
-
