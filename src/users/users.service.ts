@@ -8,9 +8,7 @@ import NormalizedResponse from 'src/utils/normalized-response';
 @Injectable()
 export class UsersService {
   constructor(private readonly prisma: PrismaService) {}
-
-
-  
+ 
   public async create(createUserDto: CreateUserDto) {
     const createdUser = new NormalizedResponse(
       `User ${createUserDto.pseudo} has been created`,
