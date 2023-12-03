@@ -21,3 +21,5 @@ public async updateByUUID(uuid: string, updateUserDto: UpdateUserDto) {
   }
 ```
 - Etape 30, pourquoi l'import de `NormalizedResponse` n'est pas enter bracket
+
+- C'est quoi InestApplication
