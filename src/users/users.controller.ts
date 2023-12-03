@@ -19,8 +19,15 @@ export class UsersController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.usersService.findOne(+id);
+   
   }
+
+  @Get(':uuid')
+  public getByUUID(@Param('uuid') uuid: string ){
+    return this.usersService.getByUUID(uuid);
+  }
+
+
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
