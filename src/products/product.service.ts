@@ -83,4 +83,17 @@ export class ProductService {
     );
     return UsersProduct.toJSON();
   }
+
+  public async deleteProductByUserUUId(userUUID: string) {
+    const deleteUsersProduct = new NormalizedResponse(
+      `${userUUID} products have been deleted`, await this.prisma.products.deleteMany({
+        where: {
+          Author: {
+            UUID: userUUID,
+          },
+        },
+      }),
+    );
+    return deleteUsersProduct.toJSON();
+  }
 }
