@@ -18,14 +18,21 @@ export class UsersService {
     return createUserDto
   }
 
+  public async getByUUID(uuid: string) {
+    const gettedUser = await this.prisma.users.findUnique({
+      where: {
+        UUID: uuid,
+      },
+    });
+    return gettedUser;
+  }
+
 
   findAll() {
     return `This action returns all users`;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
-  }
+ 
 
   update(id: number, updateUserDto: UpdateUserDto) {
     return `This action updates a #${id} user`;
