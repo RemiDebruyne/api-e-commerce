@@ -1,11 +1,11 @@
 import { isEmail, isString, Length } from "class-validator";
 
 export class CreateUserDto {
-  @IsString()
+  @isString()
   @Length(5, 50)
   pseudo: string;
 
-  @IsEmail()
+  @isEmail()
   @Length(2, 75)
   mail: string;
 }
