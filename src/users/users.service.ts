@@ -34,9 +34,6 @@ export class UsersService {
     return gettedUser.toJSON();
   }
 
-  findAll() {
-    return `This action returns all users`;
-  }
 
   public async updateByUUID(uuid: string, updateUserDto: UpdateUserDto) {
     const updatedUser = new NormalizedResponse(
