@@ -9,6 +9,6 @@ async function bootstrap() {
 }
 
 function appConfig(app: INestApplication) {
-  app.useGlobalPipes(new ValidationPipe())
+  app.useGlobalPipes(new ValidationPipe({transform: true}))
 }
 bootstrap();
