@@ -10,9 +10,8 @@ async function bootstrap() {
   await app.listen(3000);
 }
 
-
 function appConfig(app: INestApplication) {
-  app.useGlobalPipes(new ValidationPipe({transform: true}))
+  app.useGlobalPipes(new ValidationPipe({ transform: true }));
 }
 
 function initSwagger(app: INestApplication) {

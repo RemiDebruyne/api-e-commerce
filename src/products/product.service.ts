@@ -4,7 +4,6 @@ import { UpdateProductDto } from './dto/update-product.dto';
 import { PrismaService } from 'src/prisma.service';
 import NormalizedResponse from 'src/utils/normalized-response';
 
-
 @Injectable()
 export class ProductService {
   constructor(private readonly prisma: PrismaService) {}
@@ -86,7 +85,8 @@ export class ProductService {
 
   public async deleteProductByUserUUId(userUUID: string) {
     const deleteUsersProduct = new NormalizedResponse(
-      `${userUUID} products have been deleted`, await this.prisma.products.deleteMany({
+      `${userUUID} products have been deleted`,
+      await this.prisma.products.deleteMany({
         where: {
           Author: {
             UUID: userUUID,
